@@ -1,0 +1,63 @@
+/* Reset default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; 
+    background-color:black;
+}
+header {
+    background-color: #333;
+    padding: 20px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-brand {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+.navbar-menu {
+    list-style-type: none;
+    display: flex;
+}
+.navbar-menu li {
+    margin-right: 20px;
+}
+.navbar-menu li:last-child {
+    margin-right: 0; 
+}
+.navbar-menu a {
+    color: white;
+    text-decoration: none;
+}
+.search-icon {color: white;font-size: 1.2em;}
+.hero {position: relative;min-height: 100vh;overflow: hidden;color: white;text-align: center;}
+#background-video {position: absolute;top: 0;left: 0;width: 100%;height: 100%;object-fit: cover;transition: transform 0.3s ease-out;}
+.hero-content {position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);z-index: 1;}
+.hero-content h1 {font-size: 3em;margin-bottom: 20px;}
+.hero-content p {font-size: 1.2em;margin-bottom: 30px;}
+.btn { background-color: #4CAF50;color: white;padding: 10px 20px;text-decoration: none;border-radius: 5px;}
+.features {padding: 50px 0;text-align: center;position: relative;}
+#features-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;}
+.feature-content {position: relative;z-index: 1;}
+.feature {
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+}
+.feature h2 {color: white;font-size: 2em;margin-bottom: 10px;}
+.feature p {color: white;font-size: 1.2em;}
+.navbar-toggle {display: none;background: none;border: none;cursor: pointer;}
+.toggle-icon {display: block;width: 25px;height: 3px;background-color: white;margin: 5px;}
+.downloads, .documentation, .community { position: relative; min-height: 100vh; overflow: hidden; color: white; text-align: center;}
+.downloads-video, .documentation-video, .community-video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1;}
+.downloads-content, .documentation-content, .community-content {position: absolute;  top: 50%; left: 50%; transform: translate(-50%, -50%);  z-index: 1;}
+.hidden-downloads {display: none; background-color: white;position: fixed;top: 50%;left: 50%;transform: translate(-50%, -50%); z-index: 9999; padding:

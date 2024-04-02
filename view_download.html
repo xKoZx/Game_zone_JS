@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Downloads</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent grey background */
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Shadow effect */
+            width: 80%;
+            max-width: 1200px;
+        }
+        .game {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .game img {
+            width: 100px; /* Adjust image size as needed */
+            height: auto;
+            margin-right: 20px;
+        }
+        .game-info {
+            flex-grow: 1;
+        }
+        .game-info p {
+            margin: 5px 0;
+        }
+        .uninstall-btn {
+            background-color: #ff0000; /* Red color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+        .loader {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            animation: spin 2s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="game">
+                <img src="image1.jpg" alt="Game 1">
+                <div class="game-info">
+                    <p>Game Name 1</p>
+                    <p>Size: 1 GB</p>
+                </div>
+                <button class="uninstall-btn">Uninstall</button>
+            </div>
+            <div class="game">
+                <img src="image2.jpg" alt="Game 2">
+                <div class="game-info">
+                    <p>Game Name 2</p>
+                    <p>Size: 2 GB</p>
+                </div>
+                <button class="uninstall-btn">Uninstall</button>
+            </div>
+            <!-- Add more game sections here -->
+        </div>
+    </div>
+
+    <!-- Modal for confirmation -->
+    <div class="modal" id="confirmation-modal">
+        <div class="modal-content">
+            <p>Are you sure you want to uninstall?</p>
+            <button id="confirm-btn">OK</button>
+            <button id="cancel-btn">Cancel</button>
+            <div class="loading" id="loading-animation">
+                <div class="loader"></div>
+            </div>
+        </div>
+    </div>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const uninstallButtons = document.querySelectorAll('.uninstall-btn');
+        const confirmationModal = document.getElementById('confirmation-modal');
+        const confirmButton = document.getElementById('confirm-btn');
+        const cancelButton = document.getElementById('cancel-btn');
+        const loadingAnimation = document.getElementById('loading-animation');
+
+        uninstallButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                confirmationModal.style.display = 'flex'; // Display the confirmation modal
+                // Get the parent card of the uninstall button
+                const card = button.closest('.game-card');
+                confirmButton.onclick = function () {
+                    loadingAnimation.style.display = 'block'; // Show loading animation
+                    setTimeout(function () {
+                        confirmationModal.style.display = 'none'; // Hide the confirmation modal after 10 seconds
+                        loadingAnimation.style.display = 'none'; // Hide loading animation
+                        card.style.display = 'none'; // Hide the parent card of the uninstall button
+                    }, 5000); // 10 seconds delay
+                };
+            });
+        });
+
+        cancelButton.addEventListener('click', function () {
+            confirmationModal.style.display = 'none'; // Hide the confirmation modal on cancel
+        });
+    });
+</script>
+
+
+</body>
+</html>
